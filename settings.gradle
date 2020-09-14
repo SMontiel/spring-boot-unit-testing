@@ -1,0 +1,4 @@
+rootProject.name = 'demo'
+
+include ":aipisoft-querier"
+project(":aipisoft-querier").projectDir = file("./libs/aipisoft-querier")

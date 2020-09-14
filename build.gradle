@@ -1,0 +1,42 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.9.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':aipisoft-querier')
+    implementation 'org.postgresql:postgresql:42.2.12'
+
+	implementation 'org.springframework.boot:spring-boot-starter'
+    implementation('org.springframework.boot:spring-boot-starter-web'){
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    implementation 'org.springframework.boot:spring-boot-starter-jetty'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation('org.springframework.boot:spring-boot-starter-hateoas'){
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-web'
+    }
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'io.zonky.test:embedded-database-spring-test:1.5.5'
+    testImplementation 'io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64:12.3.0'
+    testImplementation 'org.flywaydb.flyway-test-extensions:flyway-spring-test:6.0.0'
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}

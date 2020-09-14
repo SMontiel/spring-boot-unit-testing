@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'maven'
+}
+
+group = 'com.aipisoft'
+
+jar {
+    baseName = 'aipisoft-querier'
+    version = '0.6'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    
+    implementation 'org.json:json:20200518'
+    implementation 'org.apache.commons:commons-lang3:3.10'
+    implementation 'commons-logging:commons-logging:1.2'
+}
+
+test {
+    useJUnitPlatform()
+}

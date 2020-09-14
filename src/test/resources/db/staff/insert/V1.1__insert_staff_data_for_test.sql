@@ -1,0 +1,1 @@
+INSERT INTO staff (name, email) VALUES ('John Doe', 'john.doe@gmail.com');
